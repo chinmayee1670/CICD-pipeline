@@ -1,0 +1,27 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main]
+
+jobs:
+   build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v5
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.14'
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+    - name: Run tests
+      run: pytest
+[09:41, 07/08/2026] Broo: from app import add_numbers
+
+def test_add_numbers():
+    assert add_numbers(2, 3) == 5
+
+def test_add_negative():
+    assert add_numbers(-1, 1) == 0
